@@ -18,8 +18,7 @@ public class Case {
         return this.contientUneBombe;
     }
     public void poseBombe() {
-        if (this.contientUneBombe()){this.contientUneBombe = false;}
-        else{this.contientUneBombe = true;}
+        this.contientUneBombe = true;
     }
     public void reset() {
         this.estDecouverte = false;
@@ -34,6 +33,13 @@ public class Case {
         else{this.estMarquee = true;}
     }
     public boolean reveler() {
-        return true;
+        if (this.estDecouverte){return false;}
+        else{
+            if (this.estMarquee){return false;}
+            else{
+                this.estDecouverte = true;
+                return true;
+            }
+        }
     }
 }

@@ -4,13 +4,15 @@ import java.util.List;
 public class Plateau {
     private int nbLignes;
     private int nbColonnes;
-    private int nombreBombe;
-    private List<List<Case>> cases;
+    private int nbBombes;
+    private int pourcentageDeBombes;
+    private List<List<CaseIntelligente>> cases;
 
-    public Plateau(int nbLignes,int nbColonnes){
+    public Plateau(int nbLignes,int nbColonnes,int pourcentage){
         this.nbLignes = nbLignes;
         this.nbColonnes = nbColonnes;
-        this.nombreBombe = 0;
+        this.pourcentageDeBombes = pourcentage;
+        this.nbBombes = 0;
         this.cases = new ArrayList<>();
         for (int i = 0;i<nbColonnes;++i){
             List<Case> ligneDeCase = new ArrayList<>();
@@ -27,35 +29,32 @@ public class Plateau {
     public int getNbColonne() {
         return this.nbColonnes;
     }
-    public void setNombreBombe(int nbBombe) {
-        this.nombreBombe = nbBombe;
+    public int getNbTotalBombes() {
+        return this.nbBombes;
     }
-    private int getNombreBombe() {
-        return this.nombreBombe;
-    }
-    private int getNbDrapeauxRestants() {
-        int nbDrapeauPlateau = 0;
-        for (int i=0;i<this.getNbColonne();++i){
-            for (int j=0;j<this.getNbLigne()){
-                if(this.cases.get(i).get(j).estDrapeau()){
-                    ++nbDrapeauPlateau;
-                }
-            }
-        }
-        return nbDrapeauPlateau - this.getNombreBombe();
-    }
-    private List<Case> casesAdjacent() {
-        
-        for (int i=0;i<this.getNbColonne();++i){
-            for (int j=0;j<this.getNbLigne()){
-                if (i+1<this.ge)
-            }
-        }
-    }
-    private int nbCases() {
+    public int nbCases() {
         return this.nbColonnes*this.nbLignes;
     }
-    private Case getCase(int ligne,int colonne) {
+    public CaseIntelligente getCase(int ligne,int colonne) {
         return this.cases.get(colonne).get(ligne);
+    }
+    //
+    public int getNbCasesMarquees() {
+        return 1;
+    }
+    public void poseBombe(int colonne, int ligne) {
+        this.cases.get(colonne).get(ligne).poseBombe();
+    }
+    private void creerLesCasesVides() {
+        
+    }
+    private void rendLesCasesIntellignetes(){
+        
+    }
+    protected void poseDesBombesAleatoirement() {
+        
+    }
+    public void reset() {
+        
     }
 }
