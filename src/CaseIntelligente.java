@@ -7,13 +7,30 @@ public class CaseIntelligente extends Case{
         super();
     }
     public void ajouteVoisine(Case uneCase) {
-        
+        this.lesVoisines.add(uneCase);
     }
     private int nombreBombesVoisines() {
-        return 0;
+        int cpt = 0;
+        for (Case c:this.lesVoisines){
+            if (c.contientUneBombe()){
+                ++cpt;
+            }
+        }
+        return cpt;
     }
     @Override
     public String toString() {
-        return "a"
+        if (this.estMarquee()){
+            return "?";
+        }
+        if (this.contientUneBombe()){
+            return "@";
+        }
+        if (!this.estMarquee() && !this.estDecouverte()){
+            return " ";
+        }
+        int cpt = this.nombreBombesVoisines();
+        return ""+cpt;
+        
     }
 }
