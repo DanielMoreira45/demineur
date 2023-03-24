@@ -2,39 +2,38 @@
  * Case
  */
 public class Case {
-    private boolean revele;
-    private boolean drapeau;
-    private boolean bombe;
+    private boolean estDecouverte;
+    private boolean estMarquee;
+    private boolean contientUneBombe;
     /** Permet de crée un nouvelle Case */
     public Case(){
-        this.revele = false;
-        this.drapeau = false;
-        this.bombe = false;
+        this.estMarquee = false;
+        this.estDecouverte = false;
+        this.contientUneBombe = false;
     }
-    /**
-     * Permet de savoir si une case est revele
-     * @return boolean : true si la case est revele, sinon false
-     */
-    public boolean estReveler() {
-        return this.revele;
+    public boolean estDecouverte() {
+        return this.estDecouverte;
     }
-    /** Permet de changer l'état de la case, la reveler si elle est cacher et inversement */
-    public void setReveler(){
-        if (this.estReveler()){this.revele = false;}
-        else{this.revele = true;}
+    public boolean contientUneBombe() {
+        return this.contientUneBombe;
     }
-    public boolean estDrapeau() {
-        return this.drapeau;
+    public void poseBombe() {
+        if (this.contientUneBombe()){this.contientUneBombe = false;}
+        else{this.contientUneBombe = true;}
     }
-    public void setDrapeau() {
-        if (this.estDrapeau()){this.drapeau = false;}
-        else{this.drapeau = true;}
+    public void reset() {
+        this.estDecouverte = false;
+        this.estMarquee = false;
+        this.contientUneBombe = false;
     }
-    public boolean estBombe() {
-        return this.bombe;
+    public boolean estMarquee() {
+        return this.estMarquee;
     }
-    public void setBombe() {
-        if (this.estBombe()){this.bombe = false;}
-        else{this.bombe = true;}
+    public void marquer(){
+        if (this.estMarquee()){this.estMarquee = false;}
+        else{this.estMarquee = true;}
+    }
+    public boolean reveler() {
+        return true;
     }
 }
