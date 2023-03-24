@@ -18,8 +18,7 @@ public class Case {
         return this.contientUneBombe;
     }
     public void poseBombe() {
-        if (this.contientUneBombe()){this.contientUneBombe = false;}
-        else{this.contientUneBombe = true;}
+        this.contientUneBombe = true;
     }
     public void reset() {
         this.estDecouverte = false;
