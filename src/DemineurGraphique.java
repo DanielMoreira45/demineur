@@ -58,6 +58,7 @@ public class DemineurGraphique extends Application {
         stage.setScene(scene);
         stage.show();
         this.maj_de_la_grille();
+        this.rejouer();
     }
 
     public void maj_de_la_grille(){

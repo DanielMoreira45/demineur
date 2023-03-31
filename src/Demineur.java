@@ -9,7 +9,6 @@ public class Demineur extends Plateau{
         super(nbLignes, nbColonnes, pourcentage);
         this.gameOver=false;
         this.score = 0;
-        this.gameWin=false;
     }
     public int getScore() {
         return this.score;
@@ -20,20 +19,19 @@ public class Demineur extends Plateau{
         if (casei.contientUneBombe()){
             this.gameOver=true;
         }
-        if (super.getNbCasesMarqueesContientBombe() == super.getNbTotalBombes()){
-            this.gameWin=false;
-        }
+        this.score+=1;
     }
     public void marquer(int colonne, int ligne) {
         CaseIntelligente casei = getCase(colonne, ligne);
         casei.marquer();
     }
     public boolean estGagnee() {
-        return this.gameWin;
+        return this.getNbTotalBombes()==this.nbdeCaseRestantes();
     }
     public boolean estPerdu(){
         return this.gameOver;
     }
+    @Override
     public void reset() {
         super.reset();
         this.gameOver = false;

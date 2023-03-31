@@ -68,13 +68,10 @@ public class Plateau {
     private void rendLesCasesIntelligentes(){
         for (int i = 0;i<this.nbColonnes;i++){
             for (int j = 0;j<this.nbLignes;j++){
-                System.out.println(i+" "+j);
                 CaseIntelligente ci = this.getCase(i, j);
                 for(int k=i-1;k<=i+1;k++){
                     for(int l=j-1;l<=j+1;l++){
-                        System.out.println("kj"+k+" "+l);
                         if (k>=0 && l>=0 && !((k==i) && (l==j)) && k<this.getNbColonne() && l<this.getNbLigne()){
-                            System.out.println("kjbon"+k+" "+l);
                             ci.ajouteVoisine(this.getCase((k), (l)));
 
                         }
@@ -95,6 +92,7 @@ public class Plateau {
         }
     }
     public void reset() {
+        this.nbBombes=0;
         for(int colonne = 0; colonne < this.getNbLigne(); ++colonne){
             for(int ligne = 0; ligne < this.getNbColonne(); ligne++){
                 CaseIntelligente casei = this.getCase(colonne, ligne);
@@ -111,6 +109,22 @@ public class Plateau {
                 }
             }
         }
+        return cpt;
+    }
+    public int nbdeCaseRestantes() {
+        return this.nbCases()-this.getNbRevele();
+    }
+
+    private int getNbRevele() {
+        int cpt=0;
+        for(int colonne = 0; colonne < this.getNbLigne(); ++colonne){
+            for(int ligne = 0; ligne < this.getNbColonne(); ligne++){
+                CaseIntelligente casei = this.getCase(colonne, ligne);
+                if (casei.estDecouverte()){
+                    cpt+=1;
+                }
+            }
+        } 
         return cpt;
     }
 }
