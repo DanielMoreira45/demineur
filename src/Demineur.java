@@ -2,12 +2,14 @@ import java.util.Scanner;
 
 public class Demineur extends Plateau{
     private boolean gameOver;
+    private boolean gameWin;
     private int score;
 
     public Demineur(int nbLignes,int nbColonnes,int pourcentage) {
         super(nbLignes, nbColonnes, pourcentage);
         this.gameOver=false;
         this.score = 0;
+        this.gameWin=false;
     }
     public int getScore() {
         return this.score;
@@ -15,13 +17,19 @@ public class Demineur extends Plateau{
     public void reveler(int colonne,int ligne){
         CaseIntelligente casei = getCase(colonne, ligne);
         casei.reveler();
+        if (casei.contientUneBombe()){
+            this.gameOver=true;
+        }
+        if (super.getNbCasesMarqueesContientBombe() == super.getNbTotalBombes()){
+            this.gameWin=false;
+        }
     }
     public void marquer(int colonne, int ligne) {
         CaseIntelligente casei = getCase(colonne, ligne);
         casei.marquer();
     }
     public boolean estGagnee() {
-        return super.getNbCasesMarqueesContientBombe() == super.getNbTotalBombes();
+        return this.gameWin;
     }
     public boolean estPerdu(){
         return this.gameOver;

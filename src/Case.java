@@ -42,4 +42,8 @@ public class Case {
             }
         }
     }
+    @Override
+    public String toString() {
+        return "Marquee "+this.estMarquee+" Decouverte "+this.estDecouverte+" Bombe "+this.contientUneBombe+";";
+    }
 }

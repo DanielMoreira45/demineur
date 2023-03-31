@@ -74,13 +74,9 @@ public class Plateau {
                     for(int l=j-1;l<=j+1;l++){
                         System.out.println("kj"+k+" "+l);
                         if (k>=0 && l>=0 && !((k==i) && (l==j)) && k<this.getNbColonne() && l<this.getNbLigne()){
-                            
                             System.out.println("kjbon"+k+" "+l);
-                            System.out.println("i+k,J+l "+(i+k)+" " + (j+l));
-                            System.out.println(this.getCase(i+k, j+l).toString());
-                            ci.ajouteVoisine(new Case());
-                            System.out.println("aled");
-                            ci.ajouteVoisine(this.getCase((i+k), (j+l)));
+                            ci.ajouteVoisine(this.getCase((k), (l)));
+
                         }
                     }
                 }
