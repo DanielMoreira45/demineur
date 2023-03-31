@@ -7,6 +7,7 @@ public class CaseIntelligente extends Case{
         super();
     }
     public void ajouteVoisine(Case uneCase) {
+        System.out.println(this.lesVoisines);
         this.lesVoisines.add(uneCase);
     }
     private int nombreBombesVoisines() {
